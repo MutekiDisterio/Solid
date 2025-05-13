@@ -2,15 +2,13 @@
 {
     public class FillingStation
     {
-        public void Refuel(Vehicle vehicle)
+        public static void Refuel(IRefuel vehicle)
         {
-            if(vehicle is PetrolCar)
-                vehicle.FillUpWithFuel();
+            vehicle.Refuel();
         }
-        public void Charge(Vehicle vehicle)
+        public static void Charge(ICharge vehicle)
         {
-            if(vehicle is ElectricCar)
-                vehicle.ChargeBattery();
+            vehicle.Charge();
         }
     }
 }

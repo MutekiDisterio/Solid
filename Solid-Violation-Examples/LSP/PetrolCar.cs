@@ -1,12 +1,13 @@
 ﻿namespace Solid_Violation_Examples.LSP
 {
-    public class PetrolCar : Vehicle
+    public class PetrolCar : Vehicle, IRefuel
     {
         private const int FUEL_TANK_FULL = 100;
         public int FuelTankLevel { get; private set; } = 0;
-        public override void FillUpWithFuel() => FuelTankLevel = FUEL_TANK_FULL;
-        public override void ChargeBattery() 
-            => throw new NotImplementedException("A petrol car cannot be recharged");
-
+        public void Refuel()
+        {
+            FuelTankLevel = FUEL_TANK_FULL;
+        }
+   
     }
 }
