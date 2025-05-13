@@ -1,24 +1,17 @@
 ﻿namespace Solid_Violation_Examples.OCP
 {
-    public class Employee
+    public abstract class Employee
     {
-        private int _salary;
-        private int _bonus;
-        private EmployeeType _type;
-        public Employee(int salary, int bonus, EmployeeType type)
+        protected int _salary;
+        protected int _bonus;
+
+        public Employee(int salary, int bonus)
         {
             _salary = salary;
             _bonus = bonus;
-            _type = type;
         }
-        public int PayAmount()
-        {
-            return _type switch
-            {
-                EmployeeType.ENGINEER => _salary,
-                EmployeeType.MANAGER => _salary + _bonus,
-                _ => 0
-            };
-        }
+
+        public abstract int PayAmount();
     }
 }
+
