@@ -4,11 +4,13 @@
     {
         private readonly IEmployeeRepository _employeeRepository;
         private readonly Clock _clock;
+        private readonly EmailSender _emailSender;
 
-        public BirthdayGreeter(IEmployeeRepository employeeRepository, Clock clock)
+        public BirthdayGreeter(IEmployeeRepository employeeRepository, Clock clock, EmailSender emailSender)
         {
             _employeeRepository = employeeRepository;
             _clock = clock;
+            _emailSender = emailSender;
         }
         public void SendGreetings()
         {
@@ -16,7 +18,7 @@
             _employeeRepository.FindEmployeesBornOn(today)
                 .Select(EmailFor)
                 .ToList()
-                .ForEach(email => new EmailSender().Send(email));
+                .ForEach(email => _emailSender.Send(email));
         }
         private Email EmailFor(Employee employee)
         {
