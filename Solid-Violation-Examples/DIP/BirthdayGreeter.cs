@@ -4,9 +4,9 @@
     {
         private readonly IEmployeeRepository _employeeRepository;
         private readonly Clock _clock;
-        private readonly EmailSender _emailSender;
+        private readonly IEmailSender _emailSender;
 
-        public BirthdayGreeter(IEmployeeRepository employeeRepository, Clock clock, EmailSender emailSender)
+        public BirthdayGreeter(IEmployeeRepository employeeRepository, Clock clock, IEmailSender emailSender)
         {
             _employeeRepository = employeeRepository;
             _clock = clock;
